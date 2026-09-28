@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigma Client - Minecraft Launcher</title>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Sigma</h1>
+                <span class="subtitle">Client</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-section="home">
+                    <span class="icon">🏠</span>
+                    <span class="text">Home</span>
+                </button>
+                <button class="nav-item" data-section="instances">
+                    <span class="icon">📦</span>
+                    <span class="text">Instances</span>
+                </button>
+                <button class="nav-item" data-section="mods">
+                    <span class="icon">🧩</span>
+                    <span class="text">Mods</span>
+                </button>
+                <button class="nav-item" data-section="settings">
+                    <span class="icon">⚙️</span>
+                    <span class="text">Settings</span>
+                </button>
+            </nav>
+            
+            <div class="user-section">
+                <div class="user-avatar">
+                    <div class="avatar-placeholder">?</div>
+                </div>
+                <div class="user-info">
+                    <div class="username">Not logged in</div>
+                    <div class="login-buttons">
+                        <button class="login-btn microsoft-login">Microsoft Login</button>
+                        <button class="login-btn simple-login">Simple Login</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Section -->
+            <section id="home-section" class="content-section active">
+                <div class="hero">
+                    <h2>Welcome to Sigma Client</h2>
+                    <p>Your modern Minecraft launcher</p>
+                </div>
+                
+                <div class="quick-actions">
+                    <button class="action-button primary">
+                        <span class="icon">▶️</span>
+                        <span>Play Latest Version</span>
+                    </button>
+                    <button class="action-button secondary">
+                        <span class="icon">➕</span>
+                        <span>New Instance</span>
+                    </button>
+                </div>
+                
+                <div class="recent-instances">
+                    <h3>Recent Instances</h3>
+                    <div class="instance-list">
+                        <div class="instance-card empty">
+                            <p>No instances yet. Create your first instance!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instances Section -->
+            <section id="instances-section" class="content-section">
+                <div class="section-header">
+                    <h2>Instances</h2>
+                    <button class="create-instance-btn">+ New Instance</button>
+                </div>
+                <div class="instance-grid">
+                    <div class="instance-card empty">
+                        <p>No instances found</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Instance Modal -->
+            <div id="new-instance-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Create New Instance</h2>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="instance-name">Instance Name</label>
+                            <input type="text" id="instance-name" placeholder="My Minecraft Instance">
+                        </div>
+                        <div class="form-group">
+                            <label for="instance-version">Minecraft Version</label>
+                            <select id="instance-version">
+                                <option value="">Select a version...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="instance-memory">Memory (MB)</label>
+                            <input type="number" id="instance-memory" value="2048" min="512" max="16384">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="modal-btn cancel">Cancel</button>
+                        <button class="modal-btn create">Create Instance</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Username Modal -->
+            <div id="username-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Enter Username</h2>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="offline-username">Username (leave empty for random)</label>
+                            <input type="text" id="offline-username" placeholder="Enter your username..." maxlength="16">
+                            <small class="form-hint">3-16 alphanumeric characters</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="modal-btn cancel">Cancel</button>
+                        <button class="modal-btn confirm">Login</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mods Section -->
+            <section id="mods-section" class="content-section">
+                <div class="section-header">
+                    <h2>Mods</h2>
+                </div>
+                <div class="mods-container">
+                    <p>Mod management coming soon</p>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="content-section">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-container">
+                    <div class="setting-group">
+                        <h3>General</h3>
+                        <div class="setting-item">
+                            <label>Java Path</label>
+                            <select id="java-path">
+                                <option value="">Auto-detect</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Memory Allocation (MB)</label>
+                            <input type="number" id="memory-allocation" value="2048" min="512" max="16384">
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>Minecraft</h3>
+                        <div class="setting-item">
+                            <label>Game Directory</label>
+                            <input type="text" id="game-directory" placeholder="~/sigma_client" readonly>
+                        </div>
+                        <div class="setting-item">
+                            <label>Download Version</label>
+                            <select id="minecraft-version">
+                                <option value="">Select a version...</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <button id="download-minecraft-btn" class="download-btn">Download Minecraft</button>
+                        </div>
+                        <div class="setting-item" id="download-progress-container" style="display: none;">
+                            <label>Download Progress</label>
+                            <div class="progress-bar">
+                                <div id="download-progress-bar" class="progress-fill"></div>
+                            </div>
+                            <div id="download-status" class="download-status">Starting download...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Launch Progress Overlay -->
+    <div id="launch-progress" class="launch-progress">
+        <div class="progress-content">
+            <h2>Launching Minecraft...</h2>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="launch-progress-bar"></div>
+            </div>
+            <p id="launch-status">Preparing launch...</p>
+        </div>
+    </div>
+
+    <script src="app.ts"></script>
+</body>
+</html>
